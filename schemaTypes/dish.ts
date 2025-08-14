@@ -27,12 +27,7 @@ export const dish = defineType({
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [
-        {
-          type: 'image',
-          options: { hotspot: true }
-        }
-    ]
+      of: [{ type: 'image', options: { hotspot: true } }]
     }),
     defineField({
       name: 'mainDish',
@@ -45,7 +40,18 @@ export const dish = defineType({
       title: 'Is Available',
       type: 'boolean',
       description: 'Set false if the dish is currently unavailable'
-    })
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name', 
+        maxLength: 96,
+        isUnique: (slug, ctx) => ctx.defaultIsUnique(slug, ctx)
+      },
+      validation: (Rule) => Rule.required()
+    }),
   ],
   preview: {
     select: {
