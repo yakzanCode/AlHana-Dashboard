@@ -1,3 +1,4 @@
+// schemas/user.js
 import { defineType, defineField } from 'sanity'
 
 export const user = defineType({
@@ -15,26 +16,13 @@ export const user = defineType({
       name: 'email',
       title: 'Email',
       type: 'string',
-      validation: (Rule) => Rule.required().email(),
+      validation: (Rule) => Rule.email(),
     }),
     defineField({
       name: 'avatar',
       title: 'Avatar',
       type: 'image',
       options: { hotspot: true },
-    }),
-    defineField({
-      name: 'feedback',
-      title: 'Feedback',
-      type: 'text',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'dish',
-      title: 'Dish',
-      type: 'reference',
-      to: [{ type: 'dish' }],
-      description: 'The dish this feedback is about',
     }),
   ],
 })
