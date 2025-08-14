@@ -1,4 +1,5 @@
 import { dish } from "./dish";
+import { teamMember } from "./teamMember";
+import { user } from "./user";
 
-export const schemaTypes = [dish]
-// sanity documents query "*[_type == \"dish\"]"
+export const schemaTypes = [dish, user, teamMember]
