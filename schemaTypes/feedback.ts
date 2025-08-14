@@ -1,7 +1,7 @@
 // schemas/feedback.js
 import { defineType, defineField } from 'sanity'
 
-export const feedback = defineType({
+export const feedBack = defineType({
   name: 'feedback',
   title: 'Feedback',
   type: 'document',
@@ -11,7 +11,8 @@ export const feedback = defineType({
       title: 'User',
       type: 'reference',
       to: [{ type: 'user' }],
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
+      description: 'The user who submitted the feedback',
     }),
     defineField({
       name: 'dish',
@@ -25,13 +26,14 @@ export const feedback = defineType({
       name: 'message',
       title: 'Feedback Message',
       type: 'text',
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
+      description: 'The feedback text from the user',
     }),
     defineField({
       name: 'rating',
       title: 'Rating',
       type: 'number',
-      description: 'Optional rating from 1 to 5',
+      description: 'Rating from 1 to 5',
       validation: (Rule) => Rule.min(1).max(5),
     }),
     defineField({
@@ -39,6 +41,20 @@ export const feedback = defineType({
       title: 'Created At',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
+      readOnly: true,
     }),
   ],
+  preview: {
+    select: {
+      userName: 'user.name',
+      dishTitle: 'dish.title',
+      rating: 'rating',
+    },
+    prepare({ userName, dishTitle, rating }) {
+      return {
+        title: `${userName || 'Unknown User'} → ${dishTitle || 'Unknown Dish'}`,
+        subtitle: rating ? `Rating: ${rating}/5` : 'No rating provided',
+      }
+    },
+  },
 })
