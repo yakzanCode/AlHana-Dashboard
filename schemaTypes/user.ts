@@ -24,5 +24,5 @@ export const user = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
-  ],
+  ]
 })
