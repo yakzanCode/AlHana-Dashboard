@@ -52,13 +52,6 @@ export const dish = defineType({
       },
       validation: (Rule) => Rule.required()
     }),
-    defineField({
-      name: 'feedbacks',
-      title: 'Feedbacks',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'feedBack' }] }],
-      description: 'Feedback left by users for this dish'
-    }),
   ],
   preview: {
     select: {

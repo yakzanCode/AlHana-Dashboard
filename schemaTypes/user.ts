@@ -24,13 +24,5 @@ export const user = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
-    
-    defineField({
-      name: 'feedbacks',
-      title: 'Feedbacks',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'feedBack' }] }],
-      description: 'Feedback written by this user'
-    }),
   ],
 })

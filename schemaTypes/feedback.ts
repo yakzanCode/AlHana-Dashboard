@@ -26,8 +26,8 @@ export const feedBack = defineType({
       validation: (Rule) => Rule.min(1).max(5),
     }),
     defineField({
-      name: 'comment',
-      title: 'Comment',
+      name: 'message',
+      title: 'Feedback Message',
       type: 'text',
     }),
     defineField({
