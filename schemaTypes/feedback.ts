@@ -39,7 +39,7 @@ export const feedBack = defineType({
   ],
   preview: {
     select: {
-      title: 'comment',
+      title: 'message',
       subtitle: 'rating',
       media: 'user.avatar',
     },
